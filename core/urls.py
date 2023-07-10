@@ -4,7 +4,7 @@
 from django.urls import path
 
 # Project
-from my_apps.core.views import IndexView
+from core.views import IndexView
 
 app_name = 'core'
 

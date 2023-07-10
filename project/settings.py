@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     # local
-    'my_apps.core',
-    'my_apps.dashboard',
-    'my_apps.shop',
+    'core',
+    'dashboard',
+    'shop',
 ]
 
 MIDDLEWARE = [
