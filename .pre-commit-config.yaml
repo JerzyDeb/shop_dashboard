@@ -1,0 +1,41 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/hadialqattan/pycln
+    rev: v2.1.2 # Possible releases: https://github.com/hadialqattan/pycln/releases
+    hooks:
+      - id: pycln
+        name: pycln
+        entry: pycln
+        language: python
+        language_version: python3.10
+        types: [ python ]
+        args: [ --config=pyproject.toml ]
+        pass_filenames: false
+        exclude: migrations/
+
+  - repo: https://github.com/pycqa/isort
+    rev: '5.12.0'
+    hooks:
+      - id: isort
+        name: isort (python)
+        entry: isort
+        args: [ --settings-path=pyproject.toml, --filter-files ]
+        types: [ python ]
+        additional_dependencies: [ "toml" ]
+        exclude: "{migrations/|app.py}"
+
+  - repo: https://github.com/pycqa/flake8
+    rev: '5.0.4'  # pick a git hash / tag to point to
+    hooks:
+      - id: flake8
+        name: flake8
+        entry: flake8
+        types: [ python ]
+        additional_dependencies: [ Flake8-pyproject ]
+        args: [ --config=pyproject.toml ]
+        exclude: "{project|migrations}/"
