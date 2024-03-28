@@ -9,6 +9,7 @@ from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('apps.core.urls')),
 ]
 
 if 'rosetta' in settings.INSTALLED_APPS:
