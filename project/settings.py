@@ -9,9 +9,12 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
 # Standard Library
+import os
 from pathlib import Path
+
+# Django
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +34,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LANGUAGES = [
+    ('pl', _('Polski')),
+    ('en', _('Angielski')),
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 # Application definition
 
@@ -48,6 +59,9 @@ INSTALLED_APPS = [
     'apps.countries.apps.CountriesConfig',
     'apps.orders.apps.OrdersConfig',
     'apps.products.apps.ProductsConfig',
+
+    # 3rd-party
+    'rosetta',
 ]
 
 MIDDLEWARE = [

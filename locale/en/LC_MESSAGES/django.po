@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-28 18:44+0000\n"
+"PO-Revision-Date: 2024-03-28 18:46+0000\n"
+"Last-Translator:   <admin@admin.pl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: apps/countries/models.py:10
+msgid "Nazwa"
+msgstr "Name"
+
+#: apps/countries/models.py:19 apps/orders/models.py:34
+msgid "Państwo"
+msgstr "Country"
+
+#: apps/countries/models.py:20
+msgid "Państwa"
+msgstr "Countries"
+
+#: apps/orders/models.py:18
+msgid "Numer zamówienia"
+msgstr "Order number"
+
+#: apps/orders/models.py:23
+msgid "Data zamówienia"
+msgstr "Order date"
+
+#: apps/orders/models.py:29
+msgid "Użytkownik"
+msgstr "User"
+
+#: apps/orders/models.py:51 apps/orders/models.py:62
+msgid "Zamówienie"
+msgstr "Order"
+
+#: apps/orders/models.py:52
+msgid "Zamówienia"
+msgstr "Orders"
+
+#: apps/orders/models.py:67 apps/products/models.py:65
+msgid "Wariant produktu"
+msgstr "Product variant"
+
+#: apps/orders/models.py:70
+msgid "Ilość"
+msgstr "Quantity"
+
+#: apps/orders/models.py:73 apps/products/models.py:57
+msgid "Cena"
+msgstr "Price"
+
+#: apps/orders/models.py:81
+msgid "Element zamówienia"
+msgstr "Order item"
+
+#: apps/orders/models.py:82
+msgid "Elementy zamówień"
+msgstr "Orders items"
+
+#: apps/products/models.py:16
+msgid "Nazwa produktu"
+msgstr "Product name"
+
+#: apps/products/models.py:20
+msgid "Slug"
+msgstr "Slug"
+
+#: apps/products/models.py:37 apps/products/models.py:45
+msgid "Produkt"
+msgstr "Product"
+
+#: apps/products/models.py:38
+msgid "Produkty"
+msgstr "Products"
+
+#: apps/products/models.py:48
+msgid "Nazwa wariantu"
+msgstr "Variant name"
+
+#: apps/products/models.py:52
+msgid "Kod magazynowy"
+msgstr "Stock number"
+
+#: apps/products/models.py:66
+msgid "Warianty produktów"
+msgstr "Products variants"
+
+#: project/settings.py:38
+msgid "Polski"
+msgstr "Polish"
+
+#: project/settings.py:39
+msgid "Angielski"
+msgstr "English"
