@@ -4,11 +4,34 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# 3rd-Party
-from slugify import slugify
-
 # Local
 from .managers import ProductVariantCustomManager
+from .utils import set_slug
+
+
+class Category(models.Model):  # noqa: D101
+    name = models.CharField(
+        _('Nazwa kategorii'),
+        max_length=255,
+    )
+    slug = models.CharField(
+        _('Slug'),
+        max_length=255,
+        editable=False,
+    )
+
+    def __str__(self):  # noqa: D105
+        return self.name
+
+    def save(self, *args, **kwargs):
+        """Set slug for object."""
+
+        set_slug(self)
+        super().save(*args, **kwargs)
+
+    class Meta:  # noqa: D106
+        verbose_name = _('Kategoria')
+        verbose_name_plural = _('Kategorie')
 
 
 class Product(models.Model):  # noqa: D101
@@ -22,6 +45,11 @@ class Product(models.Model):  # noqa: D101
         unique=True,
         editable=False,
     )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        verbose_name=_('Kategoria'),
+    )
 
     def __str__(self):  # noqa: D105
         return self.name
@@ -29,8 +57,7 @@ class Product(models.Model):  # noqa: D101
     def save(self, *args, **kwargs):
         """Set slug for object."""
 
-        if not self.pk:
-            self.slug = slugify(self.name)
+        set_slug(self)
         super().save(*args, **kwargs)
 
     class Meta:  # noqa: D106

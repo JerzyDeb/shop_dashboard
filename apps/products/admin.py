@@ -4,6 +4,7 @@
 from django.contrib import admin
 
 # Local
+from .models import Category
 from .models import Product
 from .models import ProductVariant
 
@@ -18,3 +19,8 @@ class ProductAdmin(admin.ModelAdmin):  # noqa: D101
     inlines = [
         ProductVariantInline,
     ]
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):  # noqa: D101
+    pass

@@ -39,6 +39,9 @@ LANGUAGES = [
     ('en', _('Angielski')),
 ]
 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'pl'
+MODELTRANSLATION_LANGUAGES = ('pl', 'en')
+
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
@@ -62,6 +65,7 @@ INSTALLED_APPS = [
 
     # 3rd-party
     'rosetta',
+    'modeltranslation',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl'
 
 TIME_ZONE = 'UTC'
 
