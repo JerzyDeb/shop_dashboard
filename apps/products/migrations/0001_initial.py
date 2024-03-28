@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255, verbose_name='Nazwa produktu')),
-                ('slug', models.CharField(max_length=255, unique=True, verbose_name='Slug')),
+                ('slug', models.CharField(max_length=255, unique=True, editable=False, verbose_name='Slug')),
             ],
             options={
                 'verbose_name': 'Produkt',

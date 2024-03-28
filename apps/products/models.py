@@ -4,6 +4,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+# 3rd-Party
+from slugify import slugify
+
 # Project
 from apps.products.managers import ProductVariantCustomManager
 
@@ -17,10 +20,18 @@ class Product(models.Model):  # noqa: D101
         _('Slug'),
         max_length=255,
         unique=True,
+        editable=False,
     )
 
     def __str__(self):  # noqa: D105
         return self.name
+
+    def save(self, *args, **kwargs):
+        """Set slug for object."""
+
+        if not self.pk:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     class Meta:  # noqa: D106
         verbose_name = _('Produkt')
