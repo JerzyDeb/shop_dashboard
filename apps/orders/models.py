@@ -7,8 +7,10 @@ from django.utils.translation import gettext_lazy as _
 # Project
 from apps.accounts.models import CustomUser
 from apps.countries.models import Country
-from apps.orders.managers import OrderItemCustomManager
 from apps.products.models import ProductVariant
+
+# Local
+from .managers import OrderItemCustomManager
 
 
 class Order(models.Model):  # noqa: D101
@@ -34,7 +36,7 @@ class Order(models.Model):  # noqa: D101
 
     @property
     def total_value(self):
-        """Return total value of order."""
+        """Return the sum of the products of quantity and price for each item in this order."""
 
         all_items = self.orderitem_set.all()
         total_value = sum([
@@ -46,8 +48,8 @@ class Order(models.Model):  # noqa: D101
         return f'{_("Zamóœienie nr.")} {self.number}'
 
     class Meta:  # noqa: D106
-        verbose_name = 'Zamówienie'
-        verbose_name_plural = 'Zamówienia'
+        verbose_name = _('Zamówienie')
+        verbose_name_plural = _('Zamówienia')
         ordering = [
             'purchased_date',
         ]

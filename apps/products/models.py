@@ -7,8 +7,8 @@ from django.utils.translation import gettext_lazy as _
 # 3rd-Party
 from slugify import slugify
 
-# Project
-from apps.products.managers import ProductVariantCustomManager
+# Local
+from .managers import ProductVariantCustomManager
 
 
 class Product(models.Model):  # noqa: D101
