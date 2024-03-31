@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+  <h3>{% trans 'Usuń kategorię' %} {{ object }}</h3>
+  <form method="post">
+    {% csrf_token %}
+    <p class="text-muted">{% trans 'Czy na pewno chcesz usunąć kategorię i wszystkie produkty do niej należące?' %}</p>
+    <button type="submit" class="btn btn-danger">
+      <i class="bi-trash"></i>
+      {% trans 'Usuń' %}
+    </button>
+  </form>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+  <h3>{% trans 'Utwórz nową kategorię' %}</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">
+      <i class="bi-check"></i>
+      {% trans 'Zapisz' %}
+    </button>
+  </form>
+{% endblock content %}

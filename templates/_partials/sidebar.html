@@ -1,0 +1,53 @@
+{% load i18n %}
+<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+  <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+    <a href="{% url 'core:index' %}" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="fs-5 d-none d-sm-inline text-uppercase">
+        {% trans 'Shop Dashboard' %}
+      </span>
+    </a>
+    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+      <li class="nav-item">
+        <a href="{% url 'core:index' %}" class="nav-link align-middle px-0">
+          <i class="fs-4 bi-speedometer2"></i>
+          <span class="ms-1 d-none d-sm-inline">
+            {% trans 'Home' %}
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link px-0 align-middle">
+          <i class="fs-4 bi-handbag"></i>
+          <span class="ms-1 d-none d-sm-inline active">
+            {% trans 'Zamówienia' %}
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'products:categories_list' %}" class="nav-link px-0 align-middle">
+          <i class="fs-4 bi-inboxes"></i>
+          <span class="ms-1 d-none d-sm-inline">
+            {% trans 'Kategorie produktów' %}
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'products:products_list' %}" class="nav-link px-0 align-middle">
+          <i class="fs-4 bi-grid"></i>
+          <span class="ms-1 d-none d-sm-inline">
+            {% trans 'Produkty' %}
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link px-0 align-middle">
+          <i class="fs-4 bi-people"></i>
+          <span class="ms-1 d-none d-sm-inline">
+            {% trans 'Użytkownicy' %}
+          </span>
+        </a>
+      </li>
+    </ul>
+    <hr>
+  </div>
+</div>

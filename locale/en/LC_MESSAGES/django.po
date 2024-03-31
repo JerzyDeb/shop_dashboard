@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-28 18:44+0000\n"
-"PO-Revision-Date: 2024-03-28 18:46+0000\n"
+"POT-Creation-Date: 2024-03-31 21:52+0000\n"
+"PO-Revision-Date: 2024-03-31 21:55+0000\n"
 "Last-Translator:   <admin@admin.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,7 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: apps/countries/models.py:10
+#: apps/accounts/apps.py:9
+#| msgid "Użytkownik"
+msgid "Konta użytkowników"
+msgstr "User's accounts"
+
+#: apps/countries/apps.py:9 apps/countries/models.py:20
+msgid "Państwa"
+msgstr "Countries"
+
+#: apps/countries/models.py:10 templates/categories/categories_list.html:13
 msgid "Nazwa"
 msgstr "Name"
 
@@ -27,9 +36,10 @@ msgstr "Name"
 msgid "Państwo"
 msgstr "Country"
 
-#: apps/countries/models.py:20
-msgid "Państwa"
-msgstr "Countries"
+#: apps/orders/apps.py:9 apps/orders/models.py:52
+#: templates/_partials/sidebar.html:22
+msgid "Zamówienia"
+msgstr "Orders"
 
 #: apps/orders/models.py:18
 msgid "Numer zamówienia"
@@ -47,11 +57,7 @@ msgstr "User"
 msgid "Zamówienie"
 msgstr "Order"
 
-#: apps/orders/models.py:52
-msgid "Zamówienia"
-msgstr "Orders"
-
-#: apps/orders/models.py:67 apps/products/models.py:65
+#: apps/orders/models.py:67 apps/products/models.py:92
 msgid "Wariant produktu"
 msgstr "Product variant"
 
@@ -59,7 +65,7 @@ msgstr "Product variant"
 msgid "Ilość"
 msgstr "Quantity"
 
-#: apps/orders/models.py:73 apps/products/models.py:57
+#: apps/orders/models.py:73 apps/products/models.py:84
 msgid "Cena"
 msgstr "Price"
 
@@ -71,31 +77,45 @@ msgstr "Order item"
 msgid "Elementy zamówień"
 msgstr "Orders items"
 
-#: apps/products/models.py:16
-msgid "Nazwa produktu"
-msgstr "Product name"
-
-#: apps/products/models.py:20
-msgid "Slug"
-msgstr "Slug"
-
-#: apps/products/models.py:37 apps/products/models.py:45
-msgid "Produkt"
-msgstr "Product"
-
-#: apps/products/models.py:38
+#: apps/products/apps.py:9 apps/products/models.py:65
+#: templates/_partials/sidebar.html:38
 msgid "Produkty"
 msgstr "Products"
 
-#: apps/products/models.py:48
+#: apps/products/models.py:14
+#| msgid "Nazwa wariantu"
+msgid "Nazwa kategorii"
+msgstr "Category name"
+
+#: apps/products/models.py:18 apps/products/models.py:43
+msgid "Slug"
+msgstr "Slug"
+
+#: apps/products/models.py:33 apps/products/models.py:51
+msgid "Kategoria"
+msgstr "Category"
+
+#: apps/products/models.py:34
+msgid "Kategorie"
+msgstr "Categories"
+
+#: apps/products/models.py:39
+msgid "Nazwa produktu"
+msgstr "Product name"
+
+#: apps/products/models.py:64 apps/products/models.py:72
+msgid "Produkt"
+msgstr "Product"
+
+#: apps/products/models.py:75
 msgid "Nazwa wariantu"
 msgstr "Variant name"
 
-#: apps/products/models.py:52
+#: apps/products/models.py:79
 msgid "Kod magazynowy"
 msgstr "Stock number"
 
-#: apps/products/models.py:66
+#: apps/products/models.py:93
 msgid "Warianty produktów"
 msgstr "Products variants"
 
@@ -106,3 +126,67 @@ msgstr "Polish"
 #: project/settings.py:39
 msgid "Angielski"
 msgstr "English"
+
+#: templates/_partials/sidebar.html:6
+msgid "Shop Dashboard"
+msgstr "Panel administracyjny"
+
+#: templates/_partials/sidebar.html:14
+msgid "Home"
+msgstr "Początek"
+
+#: templates/_partials/sidebar.html:30
+#: templates/categories/categories_list.html:4
+#| msgid "Warianty produktów"
+msgid "Kategorie produktów"
+msgstr "Products categories"
+
+#: templates/_partials/sidebar.html:46
+#| msgid "Użytkownik"
+msgid "Użytkownicy"
+msgstr "Users"
+
+#: templates/base.html:7
+msgid "Dashboard"
+msgstr "Panel administracyjny"
+
+#: templates/categories/_partials/categories_list_partial.html:16
+msgid "Edytuj"
+msgstr "Edit"
+
+#: templates/categories/_partials/categories_list_partial.html:22
+#: templates/categories/categories_delete.html:10
+msgid "Usuń"
+msgstr "Delete"
+
+#: templates/categories/categories_create.html:4
+msgid "Utwórz nową kategorię"
+msgstr "Create new category"
+
+#: templates/categories/categories_create.html:10
+#: templates/categories/categories_update.html:10
+msgid "Zapisz"
+msgstr "Save"
+
+#: templates/categories/categories_delete.html:4
+msgid "Usuń kategorię"
+msgstr "Delete category"
+
+#: templates/categories/categories_delete.html:7
+msgid ""
+"Czy na pewno chcesz usunąć kategorię i wszystkie produkty do niej należące?"
+msgstr ""
+"Are you sure you want to delete the category and all products belonging to "
+"it?"
+
+#: templates/categories/categories_list.html:7
+msgid "Nowa kategoria"
+msgstr "New category"
+
+#: templates/categories/categories_update.html:4
+msgid "Edytuj kategorię"
+msgstr "Edit category"
+
+#: templates/index.html:4
+msgid "Strona główna"
+msgstr "Home page"
