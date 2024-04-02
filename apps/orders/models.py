@@ -42,7 +42,7 @@ class Order(models.Model):  # noqa: D101
         total_value = sum([
             item.unit_price * item.quantity
             for item in all_items])
-        return total_value or 0
+        return round(total_value, 2) or 0
 
     def __str__(self):  # noqa: D105
         return f'{_("Zamówienie nr.")} {self.number}'

@@ -18,6 +18,7 @@ from .models import Order
 class OrderListView(ListView):  # noqa: D101
     model = Order
     template_name = 'orders/orders_list.html'
+    paginate_by = 20
 
 
 class OrderCreateView(InlineFormsetMixin, CreateView):  # noqa: D101

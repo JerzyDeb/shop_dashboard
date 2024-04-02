@@ -15,6 +15,7 @@ from .models import CustomUser
 class CustomUserListView(ListView):  # noqa: D101
     model = CustomUser
     template_name = 'accounts/users_list.html'
+    paginate_by = 20
 
 
 class CustomUserCreateView(CreateView):  # noqa: D101

@@ -18,6 +18,7 @@ from ..models import Product
 class ProductListView(ListView):  # noqa: D101
     model = Product
     template_name = 'products/products_list.html'
+    paginate_by = 20
 
 
 class ProductCreateView(InlineFormsetMixin, CreateView):  # noqa: D101
