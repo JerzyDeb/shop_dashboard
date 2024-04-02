@@ -1,6 +1,47 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-{% trans 'Strona główna' %}
+  <div class="row">
+    <div class="col-3">
+      <div class="card">
+        <div class="card-header">
+          {% trans 'Użytkownicy' %}
+        </div>
+        <div class="card-body">
+          <h2>{{ users_count }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card">
+        <div class="card-header">
+          {% trans 'Zamówienia' %}
+        </div>
+        <div class="card-body">
+          <h2>{{ orders_count }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card">
+        <div class="card-header">
+          {% trans 'Produkty' %}
+        </div>
+        <div class="card-body">
+          <h2>{{ products_count }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card">
+        <div class="card-header">
+          {% trans 'Warianty' %}
+        </div>
+        <div class="card-body">
+          <h2>{{ variants_count }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
 

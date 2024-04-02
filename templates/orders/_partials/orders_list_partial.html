@@ -1,7 +1,7 @@
 {% load i18n %}
 {% for object in object_list %}
   <tr>
-    <td class="fw-bold">{{ forloop.counter }}</td>
+    <td class="fw-bold">{{ forloop.counter0|add:page_obj.start_index }}</td>
     <td>{{ object.number }}</td>
     <td>{{ object.purchased_date }}</td>
     <td>{{ object.total_value }}</td>

@@ -15,23 +15,24 @@ from ..models import Category
 class CategoryListView(ListView):  # noqa: D101
     model = Category
     template_name = 'categories/categories_list.html'
+    paginate_by = 20
 
 
 class CategoryCreateView(CreateView):  # noqa: D101
     model = Category
     template_name = 'categories/categories_create.html'
     form_class = CategoryForm
-    success_url = reverse_lazy('products:categories_list')
+    success_url = reverse_lazy('categories:categories_list')
 
 
 class CategoryUpdateView(UpdateView):  # noqa: D101
     model = Category
     template_name = 'categories/categories_update.html'
     form_class = CategoryForm
-    success_url = reverse_lazy('products:categories_list')
+    success_url = reverse_lazy('categories:categories_list')
 
 
 class CategoryDeleteView(DeleteView):  # noqa: D101
     model = Category
     template_name = 'categories/categories_delete.html'
-    success_url = reverse_lazy('products:categories_list')
+    success_url = reverse_lazy('categories:categories_list')
