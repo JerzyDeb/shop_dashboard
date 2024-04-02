@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
-  {% for object in object_list %}
-    {{ object }}
-  {% endfor %}
+  <h3>{% trans 'Produkty' %}</h3>
+  <a href="{% url 'products:products_create' %}" class="btn btn btn-primary mb-3 mt-2">
+    <i class="bi-plus"></i>
+    {% trans 'Nowy produkt' %}
+  </a>
+  <table class="table table-hover">
+    <thead class="text-uppercase">
+    <tr>
+      <th class="fw-bold">#</th>
+      <th>{% trans 'Nazwa' %}</th>
+      <th>{% trans 'Kategoria' %}</th>
+      <th>{% trans 'Ilość wariantów' %}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody class="align-middle">
+    {% include 'products/_partials/products_list_partial.html' %}
+    </tbody>
+  </table>
 {% endblock content %}

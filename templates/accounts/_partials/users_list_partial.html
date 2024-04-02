@@ -1,0 +1,16 @@
+{% load i18n %}
+{% for object in object_list %}
+  <tr>
+    <td class="fw-bold">{{ forloop.counter }}</td>
+    <td>{{ object.get_full_name }}</td>
+    <td>{{ object.date_joined }}</td>
+    <td>{{ object.last_login|default:'--' }}</td>
+    <td class="fw-bold fs-6 text-uppercase">
+      {% if object.is_staff %}
+        {% trans 'Administracja' %}
+      {% else %}
+        {% trans 'Klient' %}
+      {% endif %}
+    </td>
+  </tr>
+{% endfor %}
