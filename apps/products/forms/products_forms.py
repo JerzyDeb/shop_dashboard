@@ -2,7 +2,7 @@
 
 # Django
 from django import forms
-from django.forms import modelformset_factory
+from django.forms import inlineformset_factory
 
 # Project
 from apps.core.mixins import BootstrapFormMixin
@@ -33,4 +33,9 @@ class ProductVariantForm(BootstrapFormMixin, forms.ModelForm):  # noqa: D101
         ]
 
 
-ProductVariantFormset = modelformset_factory(ProductVariant, form=ProductVariantForm, extra=1)
+ProductVariantFormset = inlineformset_factory(
+    Product,
+    ProductVariant,
+    form=ProductVariantForm,
+    extra=1,
+)

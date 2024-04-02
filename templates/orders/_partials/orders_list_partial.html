@@ -1,0 +1,12 @@
+{% load i18n %}
+{% for object in object_list %}
+  <tr>
+    <td class="fw-bold">{{ forloop.counter }}</td>
+    <td>{{ object.number }}</td>
+    <td>{{ object.purchased_date }}</td>
+    <td>{{ object.total_value }}</td>
+    <td>
+      {% include 'orders/_partials/dropdown_options.html' %}
+    </td>
+  </tr>
+{% endfor %}

@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% block content %}
-  <h3>{% trans 'Utwórz nowy produkt' %}</h3>
+  <h3>{% trans 'Edytuj produkt' %} {{ object }}</h3>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

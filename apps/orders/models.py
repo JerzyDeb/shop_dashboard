@@ -41,11 +41,11 @@ class Order(models.Model):  # noqa: D101
         all_items = self.orderitem_set.all()
         total_value = sum([
             item.unit_price * item.quantity
-        ] for item in all_items)
+            for item in all_items])
         return total_value or 0
 
     def __str__(self):  # noqa: D105
-        return f'{_("Zamóœienie nr.")} {self.number}'
+        return f'{_("Zamówienie nr.")} {self.number}'
 
     class Meta:  # noqa: D106
         verbose_name = _('Zamówienie')
@@ -73,6 +73,12 @@ class OrderItem(models.Model):  # noqa: D101
         _('Cena'),
     )
     objects = OrderItemCustomManager()
+
+    def save(self, *args, **kwargs):
+        """Copy unit price from product variant to order item."""
+
+        self.unit_price = self.product_variant.unit_price
+        super().save(*args, **kwargs)
 
     def __str__(self):  # noqa: D105
         return f'{_("Element")}{self.id} {_("zamówienia nr.")} {self.order.number}'

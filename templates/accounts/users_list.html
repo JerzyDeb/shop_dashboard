@@ -2,6 +2,10 @@
 {% load i18n %}
 {% block content %}
   <h3>{% trans 'Użytkownicy' %}</h3>
+  <a href="{% url 'accounts:users_create' %}" class="btn btn btn-primary mb-3 mt-2">
+    <i class="bi-plus"></i>
+    {% trans 'Nowy użytkownik' %}
+  </a>
   <table class="table table-hover">
     <thead class="text-uppercase">
     <tr>

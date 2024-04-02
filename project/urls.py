@@ -10,8 +10,10 @@ from django.urls import re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls')),
-    path('', include('apps.products.urls.urls')),
-    path('', include('apps.accounts.urls')),
+    path('categories/', include('apps.products.urls.categories_urls')),
+    path('products/', include('apps.products.urls.products_urls')),
+    path('accounts/', include('apps.accounts.urls')),
+    path('orders/', include('apps.orders.urls')),
 ]
 
 if 'rosetta' in settings.INSTALLED_APPS:

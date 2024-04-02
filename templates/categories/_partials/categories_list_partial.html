@@ -4,26 +4,7 @@
     <td class="fw-bold">{{ forloop.counter }}</td>
     <td>{{ object.name }}</td>
     <td>
-      <div class="dropdown">
-        <button class="btn rounded-circle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-          <i class="bi-three-dots-vertical"></i>
-        </button>
-        <ul class="dropdown-menu">
-          <li>
-            <a class="dropdown-item text-primary p-3" href="{% url 'products:categories_update' object.pk %}">
-              <i class="bi-pencil"></i>&nbsp;&nbsp;
-              {% trans 'Edytuj' %}
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item text-danger p-3" href="{% url 'products:categories_delete' object.pk %}">
-              <i class="bi-trash"></i>&nbsp;&nbsp;
-              {% trans 'Usuń' %}
-            </a>
-          </li>
-        </ul>
-      </div>
+      {% include 'categories/_partials/dropdown_options.html' %}
     </td>
   </tr>
 {% endfor %}

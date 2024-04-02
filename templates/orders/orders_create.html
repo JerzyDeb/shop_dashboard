@@ -2,11 +2,12 @@
 {% load static %}
 {% load i18n %}
 {% block content %}
-  <h3>{% trans 'Utwórz nowy produkt' %}</h3>
+  <h3>{% trans 'Utwórz nowe zamówienie' %}</h3>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    {% include 'products/_partials/product_variants_formset.html' %}
+    <h4 class="mt-5">{% trans 'Elementy zamowienia' %}</h4>
+    {% include 'orders/_partials/order_items_formset.html' %}
     <button type="submit" class="btn btn-primary">
       <i class="bi-check"></i>
       {% trans 'Zapisz' %}

@@ -1,0 +1,10 @@
+{% load i18n %}
+{% if object.is_staff %}
+  <span class="badge bg-primary">
+    {% trans 'Administracja' %}
+  </span>
+{% else %}
+  <span class="badge bg-secondary">
+    {% trans 'Klient' %}
+  </span>
+{% endif %}

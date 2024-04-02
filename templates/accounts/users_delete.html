@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-  <h3>{% trans 'Usuń kategorię' %} {{ object }}</h3>
+  <h3>{% trans 'Usuń użytkownika' %} {{ object }}</h3>
   <form method="post">
     {% csrf_token %}
     <p class="text-muted">
-      {% trans 'Czy na pewno chcesz usunąć kategorię i wszystkie produkty do niej należące?' %}
+      {% trans 'Czy na pewno chcesz usunąć użytkownika i wszystkie jego zamówienia?' %}
     </p>
     <button type="submit" class="btn btn-danger">
       <i class="bi-trash"></i>

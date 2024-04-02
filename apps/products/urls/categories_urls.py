@@ -9,6 +9,7 @@ from ..views.categories_views import CategoryDeleteView
 from ..views.categories_views import CategoryListView
 from ..views.categories_views import CategoryUpdateView
 
+app_name = 'categories'
 urlpatterns = [
     path('', CategoryListView.as_view(), name='categories_list'),
     path('create/', CategoryCreateView.as_view(), name='categories_create'),

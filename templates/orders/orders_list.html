@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+  <h3>{% trans 'Zamówienia' %}</h3>
+  <a href="{% url 'orders:orders_create' %}" class="btn btn btn-primary mb-3 mt-2">
+    <i class="bi-plus"></i>
+    {% trans 'Nowe zamówienie' %}
+  </a>
+  <table class="table table-hover">
+    <thead class="text-uppercase">
+    <tr>
+      <th class="fw-bold">#</th>
+      <th>{% trans 'Numer zamówienia' %}</th>
+      <th>{% trans 'Data zamówienia' %}</th>
+      <th>{% trans 'Wartość zamówienia' %}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody class="align-middle">
+    {% include 'orders/_partials/orders_list_partial.html' %}
+    </tbody>
+  </table>
+{% endblock content %}

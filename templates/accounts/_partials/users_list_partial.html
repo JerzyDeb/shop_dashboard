@@ -6,11 +6,10 @@
     <td>{{ object.date_joined }}</td>
     <td>{{ object.last_login|default:'--' }}</td>
     <td class="fw-bold fs-6 text-uppercase">
-      {% if object.is_staff %}
-        {% trans 'Administracja' %}
-      {% else %}
-        {% trans 'Klient' %}
-      {% endif %}
+      {% include 'accounts/_partials/user_status.html' %}
+    </td>
+    <td>
+      {% include 'accounts/_partials/dropdown_options.html' %}
     </td>
   </tr>
 {% endfor %}

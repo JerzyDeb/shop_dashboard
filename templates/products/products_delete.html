@@ -4,7 +4,9 @@
   <h3>{% trans 'Usuń produkt' %} {{ object }}</h3>
   <form method="post">
     {% csrf_token %}
-    <p class="text-muted">{% trans 'Czy na pewno chcesz usunąć produkt i wszystkie warinaty do niego należące?' %}</p>
+    <p class="text-muted">
+      {% trans 'Czy na pewno chcesz usunąć produkt i wszystkie warinaty do niego należące?' %}
+    </p>
     <button type="submit" class="btn btn-danger">
       <i class="bi-trash"></i>
       {% trans 'Usuń' %}
