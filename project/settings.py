@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'apps.countries.apps.CountriesConfig',
     'apps.orders.apps.OrdersConfig',
     'apps.products.apps.ProductsConfig',
+    'apps.charts.apps.ChartsConfig',
 
     # 3rd-party
     'rosetta',

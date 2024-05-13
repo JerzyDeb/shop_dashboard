@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-  <div class="row">
+  <div class="row gy-5">
     <div class="col-3">
       <div class="card">
         <div class="card-header">
@@ -42,6 +42,29 @@
         </div>
       </div>
     </div>
+    <div class="col-6 d-flex justify-content-center align-items-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="col-6 d-flex justify-content-center align-items-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <canvas id="myChart1"></canvas>
+    </div>
+    <div class="col-3">
+      <canvas id="myChart2"></canvas>
+    </div>
   </div>
 {% endblock content %}
+{% block extra_js %}
+  <script>
+      $(() => {
+          showChart('{% url 'core:line_chart_json' %}', 'myChart')
+          showChart('{% url 'core:orders' %}', 'myChart1')
+      })
+  </script>
+{% endblock extra_js %}
 
