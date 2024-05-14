@@ -1,59 +1,61 @@
 {% load i18n %}
 <h4 class="mt-5">{% trans 'Warianty produktu' %}</h4>
-<table class="table" id="product-variants">
-  <thead class="text-uppercase fw-bold">
-  <tr>
-    <th>{% trans 'Nazwa' %}</th>
-    <th>{% trans 'Kod magazynowy' %}</th>
-    <th>{% trans 'Cena' %}</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody class="align-middle">
-  {{ formset.management_form }}
-  {% for form in formset %}
-    <tr class="form-item
+<div class="table-responsive">
+  <table class="table" id="product-variants">
+    <thead class="text-uppercase fw-bold">
+    <tr>
+      <th>{% trans 'Nazwa' %}</th>
+      <th>{% trans 'Kod magazynowy' %}</th>
+      <th>{% trans 'Cena' %}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody class="align-middle">
+    {{ formset.management_form }}
+    {% for form in formset %}
+      <tr class="form-item
         {% if forloop.counter > formset.initial_form_count and not form.has_changed %}
           d-none
         {% endif %}"
-    >
-      <td class="d-none">{{ form.id }}</td>
-      <td>
-        {{ form.name }}
-        {% include '_partials/field_errors.html' with field=form.name %}
-      </td>
-      <td>
-        {{ form.stock_code }}
-        {% include '_partials/field_errors.html' with field=form.stock_code %}
-      </td>
-      <td>
-        {{ form.unit_price }}
-        {% include '_partials/field_errors.html' with field=form.unit_price %}
-      </td>
-      <td class="text-center">
-        {{ form.DELETE.as_hidden }}
-        <a class="text-danger fs-3"
-           href="#"
-           onclick="removeRow(this)"
+      >
+        <td class="d-none">{{ form.id }}</td>
+        <td>
+          {{ form.name }}
+          {% include '_partials/field_errors.html' with field=form.name %}
+        </td>
+        <td>
+          {{ form.stock_code }}
+          {% include '_partials/field_errors.html' with field=form.stock_code %}
+        </td>
+        <td>
+          {{ form.unit_price }}
+          {% include '_partials/field_errors.html' with field=form.unit_price %}
+        </td>
+        <td class="text-center">
+          {{ form.DELETE.as_hidden }}
+          <a class="text-danger fs-3"
+             href="#"
+             onclick="removeRow(this)"
+             data-form-item-class-name="form-item"
+          >
+            <i class="bi-x"></i>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="4" class="text-center">
+        <a class="btn btn-primary rounded-circle fs-4 fw-bold"
+           onclick="addRow(this)"
            data-form-item-class-name="form-item"
+           data-formset-container-id="product-variants"
+           data-total-forms-placeholder-id="id_productvariant_set-TOTAL_FORMS"
+           data-form-prefix="set-"
         >
-          <i class="bi-x"></i>
+          <i class="bi-plus"></i>
         </a>
       </td>
     </tr>
-  {% endfor %}
-  <tr>
-    <td colspan="4" class="text-center">
-      <a class="btn btn-primary rounded-circle fs-4 fw-bold"
-         onclick="addRow(this)"
-         data-form-item-class-name="form-item"
-         data-formset-container-id="product-variants"
-         data-total-forms-placeholder-id="id_productvariant_set-TOTAL_FORMS"
-         data-form-prefix="set-"
-      >
-        <i class="bi-plus"></i>
-      </a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

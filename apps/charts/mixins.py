@@ -69,7 +69,14 @@ class ChartMixin:
                     }
                 },
             },
-            'aspectRatio': 2 / 1,
+            # 'layout': {
+            #     'responsive': True,
+            #     'maintainAspectRatio': False
+            # },
+            'responsive': True,
+            'maintainAspectRatio': False,
+            'aspectRatio': 1,
+            # 'aspectRatio': 2 / 1,
         }
 
     def get(self, request, *args, **kwargs):
@@ -195,7 +202,9 @@ class MixedChartMixin:
                     }
                 },
             },
-            'aspectRatio': 2 / 1,
+            'responsive': True,
+            'maintainAspectRatio': False,
+            'aspectRatio': 1,
             'scales': self._get_scales(),
         }
 

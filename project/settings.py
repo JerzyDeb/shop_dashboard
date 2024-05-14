@@ -83,7 +83,7 @@ MIDDLEWARE = [
 
 
 def show_toolbar(request):  # noqa: D103
-    return True
+    return False
 
 
 DEBUG_TOOLBAR_CONFIG = {

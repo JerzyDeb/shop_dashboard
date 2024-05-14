@@ -6,17 +6,19 @@
     <i class="bi-plus"></i>
     {% trans 'Nowa kategoria' %}
   </a>
-  <table class="table table-hover">
-    <thead class="text-uppercase">
-    <tr>
-      <th class="fw-bold">#</th>
-      <th>{% trans 'Nazwa' %}</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody class="align-middle">
-    {% include 'categories/_partials/categories_list_partial.html' %}
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="text-uppercase">
+      <tr>
+        <th class="fw-bold">#</th>
+        <th>{% trans 'Nazwa' %}</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody class="align-middle">
+      {% include 'categories/_partials/categories_list_partial.html' %}
+      </tbody>
+    </table>
+  </div>
   {% include '_partials/pagination.html' %}
 {% endblock content %}

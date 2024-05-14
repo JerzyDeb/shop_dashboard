@@ -1,53 +1,55 @@
 {% load i18n %}
-<table class="table" id="order-items">
-  <thead class="text-uppercase fw-bold">
-  <tr>
-    <th>{% trans 'Produkt' %}</th>
-    <th>{% trans 'Ilość' %}</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody class="align-middle">
-  {{ formset.management_form }}
-  {% for form in formset %}
-    <tr class="form-item
+<div class="table-responsive">
+  <table class="table" id="order-items">
+    <thead class="text-uppercase fw-bold">
+    <tr>
+      <th>{% trans 'Produkt' %}</th>
+      <th>{% trans 'Ilość' %}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody class="align-middle">
+    {{ formset.management_form }}
+    {% for form in formset %}
+      <tr class="form-item
         {% if forloop.counter > formset.initial_form_count and not form.has_changed %}
           d-none
         {% endif %}"
-    >
-      <td class="d-none">{{ form.id }}</td>
-      <td>
-        {{ form.product_variant }}
-        {% include '_partials/field_errors.html' with field=form.product_variant %}
-      </td>
-      <td>
-        {{ form.quantity }}
-        {% include '_partials/field_errors.html' with field=form.product_variant %}
-      </td>
-      <td class="text-center">
-        {{ form.DELETE.as_hidden }}
-        <a class="text-danger fs-3"
-           href='#'
-           onclick="removeRow(this)"
+      >
+        <td class="d-none">{{ form.id }}</td>
+        <td>
+          {{ form.product_variant }}
+          {% include '_partials/field_errors.html' with field=form.product_variant %}
+        </td>
+        <td>
+          {{ form.quantity }}
+          {% include '_partials/field_errors.html' with field=form.product_variant %}
+        </td>
+        <td class="text-center">
+          {{ form.DELETE.as_hidden }}
+          <a class="text-danger fs-3"
+             href='#'
+             onclick="removeRow(this)"
+             data-form-item-class-name="form-item"
+          >
+            <i class="bi-x"></i>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="4" class="text-center">
+        <a class="btn btn-primary rounded-circle fs-4 fw-bold"
+           onclick="addRow(this)"
            data-form-item-class-name="form-item"
+           data-formset-container-id="order-items"
+           data-total-forms-placeholder-id="id_orderitem_set-TOTAL_FORMS"
+           data-form-prefix="set-"
         >
-          <i class="bi-x"></i>
+          <i class="bi-plus"></i>
         </a>
       </td>
     </tr>
-  {% endfor %}
-  <tr>
-    <td colspan="4" class="text-center">
-      <a class="btn btn-primary rounded-circle fs-4 fw-bold"
-         onclick="addRow(this)"
-         data-form-item-class-name="form-item"
-         data-formset-container-id="order-items"
-         data-total-forms-placeholder-id="id_orderitem_set-TOTAL_FORMS"
-         data-form-prefix="set-"
-      >
-        <i class="bi-plus"></i>
-      </a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
