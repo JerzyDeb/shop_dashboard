@@ -3,7 +3,7 @@
   <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
     <a href="{% url 'core:index' %}" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <span class="fs-5 d-none d-sm-inline text-uppercase">
-        {% trans 'Shop Dashboard' %}
+        {{ settings.shop_name }}
       </span>
     </a>
     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 mt-2 align-items-center align-items-sm-start w-100" id="menu">
@@ -49,6 +49,15 @@
           <i class="fs-4 bi-people"></i>
           <span class="ms-3 d-none d-sm-inline">
             {% trans 'Użytkownicy' %}
+          </span>
+        </a>
+      </li>
+      <li>
+        {% url 'core:settings' settings.pk as settings_url %}
+        <a href="{{ settings_url }}" class="nav-link align-middle text-white px-0  {% if settings_url in request.path %}active{% endif %}">
+          <i class="fs-4 bi-gear"></i>
+          <span class="ms-3 d-none d-sm-inline">
+            {% trans 'Ustawienia' %}
           </span>
         </a>
       </li>
