@@ -6,43 +6,48 @@
         {% trans 'Shop Dashboard' %}
       </span>
     </a>
-    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 mt-2 align-items-center align-items-sm-start w-100" id="menu">
       <li class="nav-item">
-        <a href="{% url 'core:index' %}" class="nav-link align-middle px-0">
+        {% url 'core:index' as home_url %}
+        <a href="{{ home_url }}" class="nav-link align-middle text-white px-0 {% if home_url == request.path %}active{% endif %}">
           <i class="fs-4 bi-speedometer2"></i>
-          <span class="ms-1 d-none d-sm-inline">
+          <span class="ms-3 d-none d-sm-inline">
             {% trans 'Home' %}
           </span>
         </a>
       </li>
       <li>
-        <a href="{% url 'orders:orders_list' %}" class="nav-link px-0 align-middle">
+        {% url 'orders:orders_list' as orders_url %}
+        <a href="{{ orders_url }}" class="nav-link align-middle text-white px-0 {% if orders_url in request.path %}active{% endif %}">
           <i class="fs-4 bi-handbag"></i>
-          <span class="ms-1 d-none d-sm-inline active">
+          <span class="ms-3 d-none d-sm-inline active">
             {% trans 'Zamówienia' %}
           </span>
         </a>
       </li>
       <li>
-        <a href="{% url 'categories:categories_list' %}" class="nav-link px-0 align-middle">
+        {% url 'categories:categories_list' as categories_url %}
+        <a href="{{ categories_url }}" class="nav-link align-middle text-white px-0 {% if categories_url in request.path %}active{% endif %}">
           <i class="fs-4 bi-inboxes"></i>
-          <span class="ms-1 d-none d-sm-inline">
+          <span class="ms-3 d-none d-sm-inline">
             {% trans 'Kategorie produktów' %}
           </span>
         </a>
       </li>
       <li>
-        <a href="{% url 'products:products_list' %}" class="nav-link px-0 align-middle">
+        {% url 'products:products_list' as products_url %}
+        <a href="{{ products_url }}" class="nav-link align-middle text-white px-0 {% if products_url in request.path %}active{% endif %}">
           <i class="fs-4 bi-grid"></i>
-          <span class="ms-1 d-none d-sm-inline">
+          <span class="ms-3 d-none d-sm-inline">
             {% trans 'Produkty' %}
           </span>
         </a>
       </li>
       <li>
-        <a href="{% url 'accounts:users_list' %}" class="nav-link px-0 align-middle">
+        {% url 'accounts:users_list' as users_url %}
+        <a href="{{ users_url }}" class="nav-link align-middle text-white px-0  {% if users_url in request.path %}active{% endif %}">
           <i class="fs-4 bi-people"></i>
-          <span class="ms-1 d-none d-sm-inline">
+          <span class="ms-3 d-none d-sm-inline">
             {% trans 'Użytkownicy' %}
           </span>
         </a>

@@ -6,6 +6,7 @@ class ChartMixin:
     label = None
     title = None
     display_title = True
+    display_legend = True
     font_size = 25
 
     @staticmethod
@@ -28,7 +29,7 @@ class ChartMixin:
             'data': self.get_data(),
         }
         if self.get_background_colors():
-            datasets['backgroundColors'] = self.get_background_colors()
+            datasets['backgroundColor'] = self.get_background_colors()
         return {
             'labels': self.get_labels(),
             'datasets': [datasets]
@@ -37,6 +38,9 @@ class ChartMixin:
     def get_chart_options(self):
         return {
             'plugins': {
+                'legend': {
+                    'display': self.display_legend,
+                },
                 'title': {
                     'display': self.display_title,
                     'text': self.title,
