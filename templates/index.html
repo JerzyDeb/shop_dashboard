@@ -2,110 +2,18 @@
 {% load i18n %}
 {% block content %}
   <div class="row g-3 overflow-hidden">
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header">
-          {% trans 'Użytkownicy' %}
-        </div>
-        <div class="card-body">
-          <span class="h2">{{ users_count }}</span>
-          {% if new_users > 0 %}
-            <span class="text-success">{{ new_users }} <i class="bi bi-arrow-up-circle-fill"></i> </span>
-          {% else %}
-            <span class="text-secondary">{{ new_users }}</span>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header">
-          {% trans 'Zamówienia' %}
-        </div>
-        <div class="card-body">
-          <span class="h2">{{ orders_count }}</span>
-          {% if new_orders > 0 %}
-            <span class="text-success">{{ new_orders }} <i class="bi bi-arrow-up-circle-fill"></i> </span>
-          {% else %}
-            <span class="text-secondary">{{ new_orders }}</span>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header">
-          {% trans 'Produkty' %}
-        </div>
-        <div class="card-body">
-          <span class="h2">{{ products_count }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header">
-          {% trans 'Warianty produktów' %}
-        </div>
-        <div class="card-body">
-          <span class="h2">{{ variants_count }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="d-flex justify-content-center align-items-center card p-3">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <canvas id="myChart11"></canvas>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="d-flex justify-content-center align-items-center card p-3">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <canvas id="myChart1"></canvas>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="d-flex justify-content-center align-items-center card p-3">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <canvas id="myChart"></canvas>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="d-flex justify-content-center align-items-center card p-3">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <canvas id="myChartxxx"></canvas>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="d-flex justify-content-center align-items-center card p-3">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <canvas id="myChartxxxhaha"></canvas>
-      </div>
-    </div>
-    {#    <div class="col-3">#}
-    {#      <canvas id="myChart2"></canvas>#}
-    {#    </div>#}
+    {% include '_partials/stats.html' %}
+    {% include '_partials/charts.html' %}
   </div>
 {% endblock content %}
-
 {% block extra_js %}
   <script>
       $(() => {
-          showChart('{% url 'core:line_chart_json' %}', 'myChart')
-          showChart('{% url 'core:orders' %}', 'myChart1')
-          showChart('{% url 'core:orders_month' %}', 'myChart11')
-          showChart('{% url 'core:product_categories' %}', 'myChartxxx')
-          showChart('{% url 'core:top_products' %}', 'myChartxxxhaha')
+          showChart('{% url 'charts:current_month_orders_chart' %}', 'currentMonthOrders')
+          showChart('{% url 'charts:last_12_month_orders_chart' %}', 'last12MonthsOrders')
+          showChart('{% url 'charts:countries_orders_chart' %}', 'OrdersCountries')
+          showChart('{% url 'charts:categories_products_chart' %}', 'CategoriesProducts')
+          showChart('{% url 'charts:top_sells_products_chart' %}', 'OrdersProducts')
       })
   </script>
 {% endblock extra_js %}

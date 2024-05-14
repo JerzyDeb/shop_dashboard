@@ -1,0 +1,51 @@
+{% load i18n %}
+<div class="col-3">
+  <div class="card">
+    <div class="card-header">
+      {% trans 'Użytkownicy' %}
+    </div>
+    <div class="card-body">
+      <span class="h2">{{ users_count }}</span>
+      {% if new_users > 0 %}
+        <span class="text-success">+{{ new_users }} <i class="bi bi-arrow-up-circle-fill"></i> </span>
+      {% else %}
+        <span class="text-secondary">{{ new_users }}</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="col-3">
+  <div class="card">
+    <div class="card-header">
+      {% trans 'Zamówienia' %}
+    </div>
+    <div class="card-body">
+      <span class="h2">{{ orders_count }}</span>
+      {% if new_orders > 0 %}
+        <span class="text-success">+{{ new_orders }} <i class="bi bi-arrow-up-circle-fill"></i> </span>
+      {% else %}
+        <span class="text-secondary">{{ new_orders }}</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="col-3">
+  <div class="card">
+    <div class="card-header">
+      {% trans 'Produkty' %}
+    </div>
+    <div class="card-body">
+      <span class="h2">{{ products_count }}</span>
+    </div>
+  </div>
+</div>
+<div class="col-3">
+  <div class="card">
+    <div class="card-header">
+      {% trans 'Warianty produktów' %}
+    </div>
+    <div class="card-body">
+      <span class="h2">{{ variants_count }}</span>
+    </div>
+  </div>
+</div>

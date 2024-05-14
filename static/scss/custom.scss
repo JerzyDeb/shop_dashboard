@@ -1,0 +1,12 @@
+.nav-link {
+  &:hover {
+    color: #276bed !important;
+    font-weight: bold;
+  }
+
+  &.active {
+    background-color: transparent !important;
+    color: #276bed !important;
+    font-weight: bold;
+  }
+}
