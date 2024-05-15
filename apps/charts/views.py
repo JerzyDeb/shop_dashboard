@@ -34,7 +34,7 @@ class CountriesOrderChartView(ChartMixin, View):
     type = 'doughnut'
     label = _('Zamówienia')
     title = _('Zamówienia według krajów')
-    display_legend = False
+    legend_position = 'left'
 
     def _get_queryset(self):
         """
@@ -92,7 +92,7 @@ class TopSellsProductsChartView(ChartMixin, View):
     type = 'doughnut'
     label = _('Zamówienia')
     title = _('Najlepiej sprzedające się produkty')
-    display_legend = False
+    legend_position = 'left'
 
     def _get_queryset(self):
         """
@@ -150,7 +150,7 @@ class ProductCategoryChartView(ChartMixin, View):
     type = 'doughnut'
     label = _('Produkty')
     title = _('Ilość produktów w kategoriach')
-    display_legend = False
+    legend_position = 'left'
 
     def _get_queryset(self):
         """

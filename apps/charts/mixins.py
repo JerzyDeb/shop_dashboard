@@ -12,6 +12,7 @@ class ChartMixin:
     title = None
     display_title = True
     display_legend = True
+    legend_position = 'top'
     font_size = 25
     background_color = None
     border_color = None
@@ -60,6 +61,7 @@ class ChartMixin:
             'plugins': {
                 'legend': {
                     'display': self.display_legend,
+                    'position': self.legend_position,
                 },
                 'title': {
                     'display': self.display_title,
@@ -69,14 +71,9 @@ class ChartMixin:
                     }
                 },
             },
-            # 'layout': {
-            #     'responsive': True,
-            #     'maintainAspectRatio': False
-            # },
             'responsive': True,
             'maintainAspectRatio': False,
             'aspectRatio': 1,
-            # 'aspectRatio': 2 / 1,
         }
 
     def get(self, request, *args, **kwargs):
@@ -105,6 +102,7 @@ class MixedChartMixin:
     title = None
     display_title = True
     display_legend = True
+    legend_position = 'top'
     font_size = 25
 
     first_chart_type = None
@@ -193,6 +191,7 @@ class MixedChartMixin:
             'plugins': {
                 'legend': {
                     'display': self.display_legend,
+                    'position': self.legend_position,
                 },
                 'title': {
                     'display': self.display_title,
