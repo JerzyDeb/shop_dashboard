@@ -16,6 +16,12 @@ from pathlib import Path
 # Django
 from django.utils.translation import gettext_lazy as _
 
+# 3rd-Party
+from environs import Env
+
+env = Env()
+env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,7 +36,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 SECRET_KEY = 'django-insecure-%%+$fzhni3m!!uz5^7#@5q3n7+bj8yz-f!%z5y1@alaznq3a_3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -83,6 +89,8 @@ MIDDLEWARE = [
 
 
 def show_toolbar(request):  # noqa: D103
+    if DEBUG:
+        return True
     return False
 
 
@@ -159,10 +167,6 @@ USE_TZ = True
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'apps_static')
