@@ -12,4 +12,4 @@ class SettingsForm(BootstrapFormMixin, forms.ModelForm):  # noqa: D101
 
     class Meta:  # noqa: D106
         model = Settings
-        fields = '__all__'
+        exclude = ['enable_test_mode']
