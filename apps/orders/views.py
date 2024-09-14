@@ -18,6 +18,7 @@ from .models import Order
 class OrderListView(ListView):  # noqa: D101
     model = Order
     template_name = 'orders/orders_list.html'
+    ordering = ['-purchased_date']
     paginate_by = 20
 
 

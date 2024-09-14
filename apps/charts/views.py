@@ -106,7 +106,7 @@ class TopSellsProductsChartView(ChartMixin, View):
         return OrderItem.objects.values(
             'product_variant__product',
         ).annotate(
-            product_count=Count('id'),
+            product_count=Count('id', distinct=True),
         ).order_by(
             '-product_count',
         )[:5]
@@ -164,7 +164,7 @@ class ProductCategoryChartView(ChartMixin, View):
         return Product.objects.values(
             'category__name',
         ).annotate(
-            product_count=Count('id'),
+            product_count=Count('id', distinct=True),
         ).order_by(
             'category__name',
         )[:5]
@@ -283,10 +283,8 @@ class OrdersChartView(MixedChartMixin, View):
             'month',
             'year',
         ).annotate(
-            order_count=Count('id'),
-            total_value=Sum(
-                F('orderitem__unit_price') * F('orderitem__quantity')
-            ),
+            order_count=Count('id', distinct=True),
+            total_value=Sum(F('orderitem__unit_price') * F('orderitem__quantity')),
         ).order_by(
             'year',
             'month',
@@ -362,9 +360,7 @@ class CurrentMonthOrdersChartView(MixedChartMixin, View):
             list: A list of strings representing the labels for each day in current month.
         """
 
-        return [
-            i for i in range(1, timezone.now().day + 1)
-        ]
+        return [i for i in range(1, timezone.now().day + 1)]
 
     def _get_queryset(self):
         """
@@ -385,10 +381,8 @@ class CurrentMonthOrdersChartView(MixedChartMixin, View):
         ).values(
             'day',
         ).annotate(
-            order_count=Count('id'),
-            total_value=Sum(
-                F('orderitem__unit_price') * F('orderitem__quantity'),
-            ),
+            order_count=Count('id', distinct=True),
+            total_value=Sum(F('orderitem__unit_price') * F('orderitem__quantity')),
         ).order_by(
             'day',
         )

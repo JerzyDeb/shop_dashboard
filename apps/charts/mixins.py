@@ -10,10 +10,11 @@ class ChartMixin:
     type = None
     label = None
     title = None
+    title_position = 'start'
     display_title = True
     display_legend = True
     legend_position = 'top'
-    font_size = 25
+    font_size = 15
     background_color = None
     border_color = None
 
@@ -65,6 +66,7 @@ class ChartMixin:
                 },
                 'title': {
                     'display': self.display_title,
+                    'align': self.title_position,
                     'text': self.title,
                     'font': {
                         'size': self.font_size,
@@ -100,10 +102,11 @@ class MixedChartMixin:
     """Mixin for two charts on one."""
 
     title = None
+    title_position = 'start'
     display_title = True
     display_legend = True
     legend_position = 'top'
-    font_size = 25
+    font_size = 15
 
     first_chart_type = None
     first_chart_label = None
@@ -176,6 +179,9 @@ class MixedChartMixin:
             'B': {
                 'type': 'linear',
                 'position': 'right',
+                'ticks': {
+                    'stepSize': 1,
+                },
             },
         }
 
@@ -195,6 +201,7 @@ class MixedChartMixin:
                 },
                 'title': {
                     'display': self.display_title,
+                    'align': self.title_position,
                     'text': self.title,
                     'font': {
                         'size': self.font_size,

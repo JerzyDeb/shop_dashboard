@@ -15,6 +15,7 @@ class OrderItemInline(admin.TabularInline):  # noqa: D101
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):  # noqa: D101
+    list_display = ['number', 'purchased_date']
     inlines = [
         OrderItemInline,
     ]

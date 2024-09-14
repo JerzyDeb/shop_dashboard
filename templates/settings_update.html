@@ -1,13 +1,40 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-  <h3>{% trans 'Zmień ustawienia' %} {{ object }}</h3>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">
-      <i class="bi-check"></i>
-      {% trans 'Zapisz' %}
-    </button>
-  </form>
+  <h3>{% trans 'Zmień ustawienia' %}</h3>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+          <i class="bi-check"></i>
+          {% trans 'Zapisz' %}
+        </button>
+      </form>
+
+      {% if object.enable_test_mode %}
+        <form class="mt-5" method="post" id="reloadDataForm" action="{% url 'core:reload_data' %}">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit">
+            <i class="bi bi-arrow-clockwise"></i>
+            {% trans 'Zresetuj bazę danych' %}
+          </button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
 {% endblock content %}
+{% block extra_js %}
+  <script>
+      $(() => {
+          $('#reloadDataForm').submit((e) => {
+              e.preventDefault();
+              const confirmation = confirm('{% trans "Czy na pewno chcesz załadować dane od nowa? Cała baza danych zostanie utracona" %}')
+              if (confirmation) {
+                  e.target.submit();
+              }
+          })
+      })
+  </script>
+{% endblock extra_js %}
