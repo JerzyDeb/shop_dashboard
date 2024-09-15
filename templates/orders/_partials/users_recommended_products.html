@@ -1,0 +1,19 @@
+{% load i18n %}
+<div class="row">
+  {% for product in products %}
+    <div class="col-sm-12 col-md-2">
+      <div class="card">
+        <div class="card-header {% if forloop.counter == 1 %}bg-success text-white{% endif %}">
+          <strong>{{ product.name }}</strong>
+        </div>
+        <div class="card-body">
+          <span class="text-success">
+            {% blocktrans with product.recommendation_count as recommendations %}
+              Produkt pojawił się <strong>{{ recommendations }}</strong> razy u podobnych użytkowników
+            {% endblocktrans %}
+          </span>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

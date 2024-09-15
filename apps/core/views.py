@@ -22,6 +22,7 @@ from apps.orders.models import OrderItem
 from apps.products.models import Category
 from apps.products.models import Product
 from apps.products.models import ProductVariant
+from apps.recommendations.models import ProductTag
 from apps.recommendations.models import UserProductInteraction
 
 
@@ -96,5 +97,6 @@ class ReloadDataView(View):
         OrderItem.generate_new_orders_items()
 
         UserProductInteraction.generate_new_interactions()
+        ProductTag.generate_new_products_tags()
 
         return HttpResponseRedirect(self.success_url)

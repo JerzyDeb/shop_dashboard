@@ -7,6 +7,7 @@ from django.views import View
 
 # Local
 from .utils import get_recommended_products_by_interactions
+from .utils import get_recommended_products_by_user_orders
 
 
 class RecommendedProductsView(View):
@@ -17,12 +18,18 @@ class RecommendedProductsView(View):
 
         user_id = int(self.request.GET.get('user_id'))
         try:
-            recommended_products = get_recommended_products_by_interactions(user_id)
             return JsonResponse({
-                'html': render_to_string(
-                    'orders/_partials/recommended_products.html',
+                'users_recommended_html': render_to_string(
+                    'orders/_partials/users_recommended_products.html',
                     {
-                        'products': recommended_products,
+                        'products': get_recommended_products_by_interactions(user_id),
+                    },
+                    request=request,
+                ),
+                'products_recommended_html': render_to_string(
+                    'orders/_partials/products_recommended_products.html',
+                    {
+                        'products': get_recommended_products_by_user_orders(user_id),
                     },
                     request=request,
                 ),

@@ -6,9 +6,16 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <h4 class="mt-5">{% trans 'Rekomendowane produkty dla użytkownika' %}</h4>
+    <h4 class="mt-5">{% trans 'Rekomendowane produkty dla użytkownika według innych użytkowników' %}</h4>
     <div class="spinner-border text-primary" role="status" style="display: none"></div>
-    <div id="recommendedProducts">
+    <div id="usersRecommendedProducts">
+      <span class="text-secondary">
+        {% trans 'Wybierz użytkownika aby wyświetlić rekomendowane dla niego produkty' %}
+      </span>
+    </div>
+    <h4 class="mt-5">{% trans 'Rekomendowane produkty dla użytkownika według zakupionych wcześniej produktów' %}</h4>
+    <div class="spinner-border text-primary" role="status" style="display: none"></div>
+    <div id="productsRecommendedProducts">
       <span class="text-secondary">
         {% trans 'Wybierz użytkownika aby wyświetlić rekomendowane dla niego produkty' %}
       </span>
@@ -26,7 +33,8 @@
   <script>
       const showRecommendedProducts = (userSelect) => {
           $('.spinner-border').toggle();
-          $('#recommendedProducts').html('');
+          $('#usersRecommendedProducts').html('');
+          $('#productsRecommendedProducts').html('');
           const $select = $(userSelect)
           $.ajax({
               url: '{% url 'recommendations:get_recommended_products' %}',
@@ -35,11 +43,13 @@
                   'user_id': $select.val()
               },
               success: (response) => {
-                  $('#recommendedProducts').html(response.html);
+                  $('#usersRecommendedProducts').html(response.users_recommended_html);
+                  $('#productsRecommendedProducts').html(response.products_recommended_html);
                   $('.spinner-border').toggle();
               },
               error: (response) => {
-                  $('#recommendedProducts').html(`<span class="text-danger">${response.responseJSON.error_message}</span>`);
+                  $('#usersRecommendedProducts').html('');
+                  $('#productsRecommendedProducts').html('');
                   $('.spinner-border').toggle();
               }
           });
