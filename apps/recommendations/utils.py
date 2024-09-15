@@ -134,7 +134,7 @@ def get_recommended_products_by_user_orders(user_id, similarity_threshold=0.4):
             similar_product_id = attribute_matrix.index[product_idx]
             if similar_product_id in purchased_products:
                 continue
-            recommendations[product_id] += 1
+            recommendations[similar_product_id] += 1
 
     top_5_recommendations = dict(recommendations.most_common(5))
     products = Product.objects.filter(id__in=top_5_recommendations.keys())
