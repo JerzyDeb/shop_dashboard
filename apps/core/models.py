@@ -31,6 +31,10 @@ class Settings(models.Model):  # noqa: D101
         _('Pokaż wykres najlepiej sprzedających się produktów'),
         default=True,
     )
+    show_products_stats = models.BooleanField(
+        _('Pokaż tabelę ze statystykami produktów'),
+        default=True,
+    )
     enable_test_mode = models.BooleanField(
         _('Włącz tryb testowy'),
         help_text=_('Tryb testowy pozwala na wymianę WSZYSTKICH danych w bazie danych (w celach pokazowych'),  # noqa: E501

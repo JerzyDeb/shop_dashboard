@@ -16,6 +16,7 @@ urlpatterns = [
     path('products/', include('apps.products.urls.products_urls')),
     path('accounts/', include('apps.accounts.urls')),
     path('orders/', include('apps.orders.urls')),
+    path('recommendations/', include('apps.recommendations.urls')),
 ]
 
 if not settings.DEBUG:

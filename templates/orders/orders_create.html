@@ -6,6 +6,13 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    <h4 class="mt-5">{% trans 'Rekomendowane produkty dla użytkownika' %}</h4>
+    <div class="spinner-border text-primary" role="status" style="display: none"></div>
+    <div id="recommendedProducts">
+      <span class="text-secondary">
+        {% trans 'Wybierz użytkownika aby wyświetlić rekomendowane dla niego produkty' %}
+      </span>
+    </div>
     <h4 class="mt-5">{% trans 'Elementy zamowienia' %}</h4>
     {% include 'orders/_partials/order_items_formset.html' %}
     <button type="submit" class="btn btn-primary">
@@ -16,4 +23,26 @@
 {% endblock content %}
 {% block extra_js %}
   <script src="{% static 'js/formset.js' %}"></script>
+  <script>
+      const showRecommendedProducts = (userSelect) => {
+          $('.spinner-border').toggle();
+          $('#recommendedProducts').html();
+          const $select = $(userSelect)
+          $.ajax({
+              url: '{% url 'recommendations:get_recommended_products' %}',
+              method: 'GET',
+              data: {
+                  'user_id': $select.val()
+              },
+              success: (response) => {
+                  $('#recommendedProducts').html(response.html);
+                  $('.spinner-border').toggle();
+              },
+              error: (response) => {
+                  $('#recommendedProducts').html(`<span class="text-danger">${response.responseJSON.error_message}</span>`);
+                  $('.spinner-border').toggle();
+              }
+          });
+      }
+  </script>
 {% endblock extra_js %}

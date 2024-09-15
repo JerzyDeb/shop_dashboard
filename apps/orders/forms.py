@@ -14,6 +14,13 @@ from .models import OrderItem
 
 class OrderForm(BootstrapFormMixin, forms.ModelForm):  # noqa: D101
 
+    def __init__(self, *args, **kwargs):
+        """Update onchange attribute to run js function."""
+
+        super().__init__(*args, **kwargs)
+        if not self.instance.pk:
+            self.fields['user'].widget.attrs.update({'onchange': 'showRecommendedProducts(this)'})
+
     class Meta:  # noqa: D106
         model = Order
         fields = [
