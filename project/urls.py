@@ -18,12 +18,12 @@ urlpatterns = [
     path('orders/', include('apps.orders.urls')),
     path('recommendations/', include('apps.recommendations.urls')),
 ]
-
-if not settings.DEBUG:
-    urlpatterns += (
-        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-        re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
-    )
+#
+# if not settings.DEBUG:
+#     urlpatterns += (
+#         re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+#         re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+#     )
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
