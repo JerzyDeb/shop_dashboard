@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-echo "Cloning repo..."
-git clone "${GIT_REPO_URL}" "~/${APP_NAME}"
-
 echo "Updating system..."
 sudo apt update
 sudo apt -y upgrade
