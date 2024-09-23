@@ -38,7 +38,7 @@ class Settings(models.Model):  # noqa: D101
     enable_test_mode = models.BooleanField(
         _('Włącz tryb testowy'),
         help_text=_('Tryb testowy pozwala na wymianę WSZYSTKICH danych w bazie danych (w celach pokazowych'),  # noqa: E501
-        default=False,
+        default=True,
     )
 
     def __str__(self):  # noqa: D105
